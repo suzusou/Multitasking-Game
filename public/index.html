@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マルチタスクゲーム</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <!-- ヘッダー部分 -->
+    <header>
+        <div class="title">Multitasking Game</div>
+    </header>
+    <!--  -->
+
+    <main>
+
+        <!-- スタート画面 -->
+        <div id="gameStartModal" class="modal">
+            <div class="modal-content" id="modal-content">
+                <div id="modal-header-s" class="modal-header">
+                    <h1>難易度設定</h1>
+                </div>
+                <div id="modal-body-s" class="modal-body">
+                    <div class="radio">
+                        <p><input type="radio" name="gameMode" value="0" id="radio1" checked><label
+                                for="radio1">Easy</label></p>
+                        <p><input type="radio" name="gameMode" value="1" id="radio2"><label for="radio2">Nomal</label>
+                        </p>
+                        <p><input type="radio" name="gameMode" value="2" id="radio3"><label for="radio3">Hard</label>
+                        </p>
+                    </div>
+                    <p id="attention">※マイクを許可しないと、このゲームに参加できません。</p>
+                    <p id="attention2">マイクが反応していないときは、更新してください。</p>
+                    <p><button id="start" onclick="start()">ゲーム開始</button></p>
+                </div>
+            </div>
+
+            <p><button id="rule" onclick="rules()">遊び方</button></p>
+
+            <div class="rule-modal-content" id="rule-modal-content">
+                <div id="rule-modal-header-s" class="rule-modal-header">
+                    <h1>ルール説明</h1>
+                </div>
+                <div id="rule-modal-body-s" class="rule-modal-body">
+                    <p id="explanation">このゲームはマルチタスク能力を測るゲームです。３つのタスク（タイピング、文字を読む、決められたボタンの色の順番でクリックする）
+                        をこなすことでポイントを得ることができます。タイピングでは、画面に表示される文字を入力します。（<span class="red">大文字、小文字判定あり、空白判定あり</span>）文字を読むタスクでは、
+                        画面に表示されている文字を読むことでタスクが完了します。<span class="red">タブのところに赤い丸のマークがない時は、マイクが反応していないので、更新してやり直してください。</span>決められたボタンの色の順番でクリックするでは、画面で指定されてる順番でボタンをタップすることでポイントが
+                        加算されます。各タスクが完了すると、文字が緑色に変化します。あと、右上には残り時間、左上には現在獲得しているポイント数が表示されます。詳しいルールや実際にPlay
+                        している動画は下記のURLをクリックしてください。
+                    </p>
+                    <a href="https://github.com/suzusou/Multitasking" id="code">詳しいルールやソースコードはこちら</a>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+
+        <!-- ゲーム画面 -->
+        <p class="TimeRemaining" id="TimeRemaining"></p>
+        <p class="NowPoint" id="NowPoint">現在:0点</p>
+        <button id="colorrighttopbtn" onclick="secondbtns()"></button>
+        <button id="colorlefttopbtn" onclick="firstbtns()"></button>
+        <button id="colorrightbottombtn" onclick="fourthbtns()"></button>
+        <button id="colorleftbottombtn" onclick="thirdbtns()"></button>
+        <div class="question" id="question">
+            <div class="typetitle"><span class="under">タイピング文字</span></div>
+            <p id="typetext"></p>
+            <div class="speechtitle"><span class="under">音読する文字</span></div>
+            <div class="speechtext" id="speechtext"></div>
+            <div class="colortitle"><span class="under">クリックするボタンの順番</span></div>
+            <div class="colortext" id="colortext">
+                <span class="colorfirst" id="colorfirst"></span>
+                <span class="colorsecond" id="colorsecond"></span>
+                <span class="colorthird" id="colorthird"></span>
+                <span class="colorfourth" id="colorfourth"></span>
+            </div>
+        </div>
+        <!--  -->
+
+        <!-- ゲーム終了を知らせる -->
+        <div class="end" id="end">Game End</div>
+        <!--  -->
+
+        <!-- ゲーム終了画面 -->
+        <div id="gameResultModal" class="resultModal">
+            <div class="result-modal-content">
+                <div id="result-modal-header-s" class="result-modal-header">
+                    <h1>結果発表</h1>
+                </div>
+                <div id="result-modal-body-s" class="result-modal-body">
+                    <div class="resultPoint">あなたの得点は...<span class="point" id="point"></span></div>
+                    <div class="ranking">
+                        <img src="/images/Gold.jpg" alt="" id="gold"><span id="one"></span>
+                        <img src="/images/Silver.jpg" alt="" id="silver"><span id="two"></span>
+                        <img src="/images/Copper.jpg" alt="" id="copper" ><span id="three"></span>
+                    </div>
+                    <p><button id="retry" onclick="retry()">リトライ</button></p>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+
+    </main>
+    <script src="js/firebase.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+    <script src="js/index.js" ></script>
+</body>
+
+</html>

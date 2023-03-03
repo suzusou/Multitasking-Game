@@ -1,0 +1,470 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&text=0123456789');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+header {
+    background-color: rgba(95, 158, 160, 0.6);
+}
+
+.title {
+    text-align: center;
+    font-size: 30px;
+    padding: 10px 0 10px 0;
+    font-weight: 900;
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #f4f4f4;
+    position: fixed;
+    padding: 0;
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1), 0 7px 20px 0 rgba(0, 0, 0, 0.1);
+    animation-name: tranceform;
+    animation-duration: 0.5s;
+    top: 15%;
+    left: 5%;
+    height: 70%;
+    width: 90%;
+    border-radius: 10px;
+}
+
+.modal-header {
+    background-color: rgba(95, 158, 160, 0.6);
+    margin: 0;
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.rule-modal-content {
+    background-color: #f4f4f4;
+    position: fixed;
+    padding: 0;
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1), 0 7px 20px 0 rgba(0, 0, 0, 0.1);
+    animation-name: tranceform;
+    animation-duration: 0.5s;
+    top: 15%;
+    left: 5%;
+    height: 70%;
+    width: 90%;
+    border-radius: 10px;
+    display: none;
+}
+
+.rule-modal-header {
+    background-color: rgba(95, 158, 160, 0.6);
+    margin: 0;
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.resultModal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+#explanation {
+    width: 94%;
+    padding-left: 3%;
+    padding-top: 10px;
+    font-size: 20px;
+}
+
+.red{
+    color: red;
+}
+
+#code {
+    position: fixed;
+    right: 4%;
+    bottom: 19%;
+    transform: translate(-50%, 50%);
+    transition: all 0.4s ease 0s;
+}
+
+#code:hover {
+    opacity: 0.8;
+    transform: translate(-50%, 50%)scale(1.03, 1.03);
+}
+
+.result-modal-content {
+    background-color: #f4f4f4;
+    position: fixed;
+    padding: 0;
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1), 0 7px 20px 0 rgba(0, 0, 0, 0.1);
+    animation-name: tranceform;
+    animation-duration: 0.5s;
+    top: 15%;
+    left: 5%;
+    height: 70%;
+    width: 90%;
+    border-radius: 10px;
+}
+
+.result-modal-header {
+    background-color: rgba(95, 158, 160, 0.6);
+    margin: 0;
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.resultPoint {
+    font-size: 22px;
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 32%;
+    left: 30%;
+
+}
+
+.point {
+    margin-left: 20px;
+    font-size: 80px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.resultTitle {
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 45%;
+    left: 20%;
+    font-size: 24px;
+}
+
+#gold {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 28%;
+    right: 35%;
+}
+
+#one {
+    font-family: 'Nunito', sans-serif;
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 28%;
+    left: 70%;
+    font-size: 40px;
+}
+
+#silver {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 40%;
+    right: 35%;
+}
+
+#two {
+    font-family: 'Nunito', sans-serif;
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 40%;
+    left: 70%;
+    font-size: 40px;
+}
+
+#copper {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 52%;
+    right: 35%;
+}
+
+#three {
+    font-family: 'Nunito', sans-serif;
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 52%;
+    left: 70%;
+    font-size: 40px;
+}
+
+.radio {
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 25%;
+    left: 50%;
+}
+
+label[for="radio1"],
+label[for="radio2"],
+label[for="radio3"] {
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+input[type="radio"] {
+    margin-top: 18px;
+}
+
+.TimeRemaining {
+    font-size: 35px;
+    font-family: 'Nunito', sans-serif;
+    padding-left: 15px;
+}
+
+.NowPoint {
+    font-size: 35px;
+    font-family: 'Nunito', sans-serif;
+    position: fixed;
+    top: 55px;
+    right: 1%;
+    z-index: -1;
+    display: none;
+}
+
+#start {
+    padding: 7px 15px;
+    border: none;
+    font-size: 22px;
+    color: black;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgba(95, 158, 160, 0.6);
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 65%;
+    left: 50%;
+    transition: all 0.4s ease 0s;
+    font-weight: 900;
+}
+
+#start:hover {
+    opacity: 0.8;
+    transform: translate(-50%, 50%) scale(1.05, 1.05);
+}
+
+#rule {
+    padding: 3px 15px;
+    border: none;
+    font-size: 18px;
+    color: black;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgba(95, 158, 160, 0.6);
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 75%;
+    right: 3%;
+    font-weight: 900;
+    transition: all 0.4s ease 0s;
+    z-index: 3;
+}
+
+#rule:hover {
+    opacity: 0.8;
+    transform: translate(-50%, 50%) scale(1.05, 1.05);
+}
+
+#retry {
+    padding: 7px 15px;
+    border: none;
+    font-size: 22px;
+    color: black;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgba(95, 158, 160, 0.6);
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 68%;
+    left: 50%;
+    transition: all 0.4s ease 0s;
+    font-weight: 900;
+    font-family: 'Nunito', sans-serif;
+}
+
+#retry:hover {
+    opacity: 0.8;
+    transform: translate(-50%, 50%) scale(1.05, 1.05);
+}
+
+#attention {
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 55%;
+    left: 50%;
+    font-size: 16px;
+}
+#attention2 {
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: 60%;
+    left: 50%;
+    font-size: 16px;
+}
+
+.end {
+    display: none;
+    position: fixed;
+    font-size: 50px;
+    transform: translate(-50%, 50%);
+    top: 40%;
+    left: 50%;
+    animation-name: tranceform;
+    animation-duration: 2.0s;
+}
+
+.question {
+    text-align: center;
+    font-size: 25px;
+    position: fixed;
+    transform: translate(-50%, 50%);
+    top: -15%;
+    left: 50%;
+    z-index: -1;
+    display: none;
+    height: 400px;
+    width: 600px;
+}
+
+.typetitle {
+    padding-top: 20px;
+
+}
+
+.speechtitle {
+    padding-top: 60px;
+
+}
+
+.colortitle {
+    padding-top: 60px;
+}
+
+.under {
+    border-bottom: 1.5px solid #999;
+}
+
+.speechtext {
+    padding-top: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #666;
+    text-align: center;
+}
+
+#typetext {
+    padding-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #666;
+    text-align: center;
+}
+
+#colortext {
+    padding-top: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #666;
+    text-align: center;
+}
+
+
+
+#colorrighttopbtn {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 17%;
+    right: 2%;
+    border-radius: 50%;
+    border: none;
+    z-index: -1;
+    display: none;
+}
+
+#colorlefttopbtn{ 
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 17%;
+    left: 2%;
+    border-radius: 50%;
+    border: none;
+    z-index: -1;
+    display: none;
+}
+
+#colorrightbottombtn{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 2%;
+    right:2%;
+    border-radius: 50%;
+    border: none;
+    z-index: -1;
+    display: none;
+}
+
+#colorleftbottombtn{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 2%;
+    left: 2%;
+    border-radius: 50%;
+    border: none;
+    z-index: -1;
+    display: none;
+}
+
+span {
+    transition: all 300ms 0s ease;
+}
+
+.add-color {
+    font-size: 25px;
+    color: rgb(95, 158, 160);
+}
+
+@keyframes tranceform {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .end {
+        font-size: 35px;
+    }
+
+    .TimeRemaining {
+        font-size: 25px;
+    }
+
+    #attention {
+        top: 55%;
+        font-size: 10px;
+    }
+}
