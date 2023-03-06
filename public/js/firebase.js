@@ -4,12 +4,7 @@ import { getFirestore, collection, getDocs, doc, updateDoc } from "https://www.g
 
 // Firebaseの情報
 const firebaseConfig = {
-    apiKey: "AIzaSyDp1AMW8kzmvkKiZkDn5hr_ba7YHANwX2A",
-    authDomain: "multitasking-f4765.firebaseapp.com",
-    projectId: "multitasking-f4765",
-    storageBucket: "multitasking-f4765.appspot.com",
-    messagingSenderId: "718143869939",
-    appId: "1:718143869939:web:5ca27f75b8e5fea2e83886"
+
 };
 
 const gameModes = document.getElementsByName("gameMode");

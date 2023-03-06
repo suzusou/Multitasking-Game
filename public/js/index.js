@@ -26,7 +26,7 @@ const gameMode = document.getElementsByName("gameMode");
 
 // Web Speech API
 SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
-const recognition = new SpeechRecognition();
+var recognition = new SpeechRecognition();
 recognition.lang = 'ja-JP';
 
 // 初期値の設定
@@ -139,6 +139,83 @@ window.onload = () => {
 
 };
 
+function record() {
+
+    // 録音開始
+    SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = 'ja-JP';
+    recognition.continuous = true;
+    recognition.start();
+
+    recognition.onsoundstart = function () {
+        console.log("start");
+    };
+
+    recognition.onnomatch = function () {
+        console.log("restart");
+    };
+
+    recognition.onerror = function () {
+        console.log("error");
+        if(bool === true){
+            record();
+        }
+       
+    };
+    recognition.onsoundend = function () {
+        console.log("stop");
+        if(bool === true){
+            record();
+        }
+    };
+
+    // 音が発生したら
+    recognition.onresult = (event) => {
+
+        // セットされたテキストと比較
+        if (speechtext.innerHTML == event.results[count][0].transcript) {
+            // 成功したら
+            console.log("成功:  " + event.results[count][0].transcript + "  " + speechtext.innerHTML);
+
+            if (speechtext.style.color == 'rgb(102, 102, 102)') {
+                window.global.Points = window.global.Points + 5;
+                NowPoint.innerHTML = "現在:" + window.global.Points + "点";
+            }
+
+            bools = true;
+            speechtext.style.color = 'rgb(95, 158, 160)';
+            next();
+
+
+        } else {
+            // 失敗したら
+            var speech = speechtext.innerHTML.slice(0, -1);
+
+            if (speech == event.results[count][0].transcript) {
+                // 成功したら
+                console.log("成功:  " + event.results[count][0].transcript + "  " + speechtext.innerHTML);
+
+                if (speechtext.style.color == 'rgb(102, 102, 102)') {
+                    window.global.Points = window.global.Points + 5;
+                    NowPoint.innerHTML = "現在:" + window.global.Points + "点";
+                }
+
+                bools = true;
+                speechtext.style.color = 'rgb(95, 158, 160)';
+                next();
+
+            } else {
+                console.log("失敗:  " + event.results[count][0].transcript + "  " + speechtext.innerHTML);
+            }
+
+        }
+
+        count++;
+
+    }
+}
+
 // スタートボタンが押されたら実行する
 function start() {
 
@@ -203,10 +280,6 @@ function start() {
     //　秒数カウントスタート 
     startShowing();
 
-    // 録音開始
-    recognition.continuous = true;
-    recognition.start();
-
     // タイピング開始
     bool = true;
     createText();
@@ -217,50 +290,7 @@ function start() {
     console.log("width: " + screen.width + "px" + "  height: " + screen.height + "px");
     count = 0;
 
-    // 音が発生したら
-    recognition.onresult = (event) => {
-
-        // セットされたテキストと比較
-        if (speechtext.innerHTML == event.results[count][0].transcript) {
-            // 成功したら
-            console.log("成功:  " + event.results[count][0].transcript + "  " + speechtext.innerHTML);
-
-            if (speechtext.style.color == 'rgb(102, 102, 102)') {
-                window.global.Points = window.global.Points + 5;
-                NowPoint.innerHTML = "現在:" + window.global.Points + "点";
-            }
-
-            bools = true;
-            speechtext.style.color = 'rgb(95, 158, 160)';
-            next();
-
-
-        } else {
-            // 失敗したら
-            var speech = speechtext.innerHTML.slice(0, -1);
-
-            if (speech == event.results[count][0].transcript) {
-                // 成功したら
-                console.log("成功:  " + event.results[count][0].transcript + "  " + speechtext.innerHTML);
-
-                if (speechtext.style.color == 'rgb(102, 102, 102)') {
-                    window.global.Points = window.global.Points + 5;
-                    NowPoint.innerHTML = "現在:" + window.global.Points + "点";
-                }
-
-                bools = true;
-                speechtext.style.color = 'rgb(95, 158, 160)';
-                next();
-
-            } else {
-                console.log("失敗:  " + event.results[count][0].transcript + "  " + speechtext.innerHTML);
-            }
-
-        }
-
-        count++;
-
-    }
+    record();
 
 }
 
@@ -364,9 +394,6 @@ function showPassage() {
         clearInterval(PassageID);
         bool = false;
 
-        // 録音終了
-        recognition.stop();
-
         // 表示の切り替え
         typetext.style.display = 'none';
         question.style.display = 'none';
@@ -386,6 +413,9 @@ function showPassage() {
             window.globalData.ThirdSetFirebase();
         }
 
+          // 録音終了
+          recognition.stop();
+
         // 2秒後に処理したい処理
         setTimeout(function () {
             end.style.display = 'none';
@@ -395,20 +425,29 @@ function showPassage() {
             // 更新出来たら、表示を変更
             if (window.global.score[0] < window.global.Points) {
                 one.style.color = 'red';
+                two.style.color = 'black';
+                three.style.color = 'black';
                 one.innerHTML = window.global.Points + "点!!";
                 two.innerHTML = window.global.score[0] + "点";
                 three.innerHTML = window.global.score[1] + "点";
             } else if (window.global.score[1] < window.global.Points) {
+                one.style.color = 'black';
                 two.style.color = 'red';
+                three.style.color = 'black';
                 one.innerHTML = window.global.score[0] + "点";
                 two.innerHTML = window.global.Points + "点!!";
                 three.innerHTML = window.global.score[1] + "点";
             } else if (window.global.score[2] < window.global.Points) {
+                one.style.color = 'black';
+                two.style.color = 'black';
                 three.style.color = 'red';
                 one.innerHTML = window.global.score[0] + "点";
                 two.innerHTML = window.global.score[1] + "点";
                 three.innerHTML = window.global.Points + "点!!";
             } else {
+                one.style.color = 'black';
+                two.style.color = 'black';
+                three.style.color = 'black';
                 one.innerHTML = window.global.score[0] + "点";
                 two.innerHTML = window.global.score[1] + "点";
                 three.innerHTML = window.global.score[2] + "点";
@@ -556,7 +595,6 @@ function next() {
         fourthbtn.style.display = 'block';
         bools = false;
         boolt = false;
-        // recognition.start();
     }
 
 }
