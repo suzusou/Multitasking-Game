@@ -4,7 +4,7 @@ import { getFirestore, collection, getDocs, doc, updateDoc } from "https://www.g
 
 // Firebaseの情報
 const firebaseConfig = {
-
+  
 };
 
 const gameModes = document.getElementsByName("gameMode");
@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 // Firestoreを取得
 const db = getFirestore(app);
 
-
+// Firebaseのrankの情報を取得
 async function ReadFirebase() {
     const shot = await getDocs(collection(db, "rank"));
     shot.forEach((doc) => {
@@ -32,6 +32,7 @@ async function ReadFirebase() {
     console.log(window.globalData.hardPoint);
 }
 
+// 1位の時
 async function FirstSetFirebase() {
 
     // Firestoreに書き込む
@@ -73,7 +74,7 @@ async function FirstSetFirebase() {
     }
 
 }
-
+// ２位の時
 async function SecondSetFirebase() {
 
     // Firestoreに書き込む
@@ -109,7 +110,7 @@ async function SecondSetFirebase() {
     }
 
 }
-
+// ３位の時
 async function ThirdSetFirebase() {
 
     // Firestoreに書き込む
@@ -135,7 +136,7 @@ async function ThirdSetFirebase() {
 
 }
 
-
+// グローバル変数の設定
 window.globalData = {};
 window.globalData.ReadFirebase = ReadFirebase;
 window.globalData.FirstSetFirebase = FirstSetFirebase;

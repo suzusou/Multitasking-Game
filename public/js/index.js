@@ -139,6 +139,7 @@ window.onload = () => {
 
 };
 
+//音声認識
 function record() {
 
     // 録音開始
@@ -158,6 +159,7 @@ function record() {
 
     recognition.onerror = function () {
         console.log("error");
+        // たまに止まることがあるので、再帰的に呼び出す
         if(bool === true){
             record();
         }
@@ -165,6 +167,7 @@ function record() {
     };
     recognition.onsoundend = function () {
         console.log("stop");
+        // たまに止まることがあるので、再帰的に呼び出す
         if(bool === true){
             record();
         }
@@ -599,6 +602,7 @@ function next() {
 
 }
 
+// グローバル変数の設定
 window.global = {};
 window.global.Points = points;
 window.global.score = score;
